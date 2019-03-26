@@ -17,27 +17,48 @@ class ChatSingle extends Component {
   };
   render() {
     const { isDateVisible } = this.state;
-    const { date } = this.props;
+    const { isMine, color, image, userName, message, date } = this.props;
     return (
       <div className="chatSingle">
         <div className="row">
-          <div className="col-2">
-            <img src="/assets/images/1.jpeg" alt="" />
-          </div>
-          <div className="col-10">
-            <p onClick={() => this.handleToggleDateVisibility()}>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat
-              quis doloremque facilis nostrum eos possimus veniam explicabo
-              temporibus maxime dolorem, dolorum, velit hic eligendi porro nulla
-              assumenda tenetur, doloribus magni.
-            </p>
-            {isDateVisible ||
-              (date && (
-                <p className={date ? "active" : isDateVisible ? "active" : ""}>
-                  10 min ago
+          {isMine || (
+            <React.Fragment>
+              <div className="col-2 user">
+                <img src={image} alt="" style={{ borderColor: color }} />
+              </div>
+              <div className="col-10 message">
+                <p>{userName}</p>
+                <p
+                  onClick={() => this.handleToggleDateVisibility()}
+                  style={{ background: color }}
+                >
+                  {message}
                 </p>
-              ))}
-          </div>
+                {isDateVisible && (
+                  <p className={isDateVisible ? "active" : ""}>{date}</p>
+                )}
+              </div>
+            </React.Fragment>
+          )}
+          {isMine && (
+            <React.Fragment>
+              <div className="col-10 message active">
+                <p>{userName}</p>
+                <p
+                  onClick={() => this.handleToggleDateVisibility()}
+                  style={{ background: color }}
+                >
+                  {message}
+                </p>
+                {isDateVisible && (
+                  <p className={isDateVisible ? "active" : ""}>{date}</p>
+                )}
+              </div>
+              <div className="col-2 user">
+                <img src={image} alt="" style={{ borderColor: color }} />
+              </div>
+            </React.Fragment>
+          )}
         </div>
       </div>
     );

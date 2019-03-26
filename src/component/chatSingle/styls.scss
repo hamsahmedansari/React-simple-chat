@@ -2,28 +2,47 @@
   img {
     max-width: 30px;
     max-height: 30px;
-    border: 2px solid #ccc;
+    border: 2px solid #04a9f4;
     border-radius: 20px;
   }
   > div {
-    > :nth-child(2) {
+    > .message {
       padding: 0;
       padding-right: 22px;
       margin-bottom: 5px;
       > :nth-child(1) {
+        margin: 0px;
+      }
+      > :nth-child(2) {
         padding: 10px;
         margin: 0;
         color: #fff;
         background: #04a9f4;
         border-radius: 33px;
         border-top-left-radius: 0;
-        border-bottom-right-radius: 0;
         cursor: pointer;
       }
-      > :nth-child(2) {
+      > :nth-child(3) {
         font-size: 11px;
         color: #555;
         text-align: right;
+      }
+      &.active {
+        padding-right: 0;
+        padding-left: 22px;
+        > :nth-child(1) {
+          text-align: right;
+          margin: 0px;
+        }
+        > :nth-child(2) {
+          color: #fff;
+          border-radius: 33px;
+          background: #04a9f4;
+          border-top-right-radius: 0;
+        }
+        > :nth-child(3) {
+          text-align: left;
+        }
       }
     }
   }
