@@ -39,7 +39,7 @@ class Chat extends Component {
             <div className="col-12">
               <ChatSingle />
               <ChatSingle />
-              <ChatSingle />
+              <ChatSingle date={true} />
             </div>
           </div>
           <div className="row">

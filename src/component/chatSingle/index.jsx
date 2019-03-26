@@ -17,6 +17,7 @@ class ChatSingle extends Component {
   };
   render() {
     const { isDateVisible } = this.state;
+    const { date } = this.props;
     return (
       <div className="chatSingle">
         <div className="row">
@@ -30,9 +31,12 @@ class ChatSingle extends Component {
               temporibus maxime dolorem, dolorum, velit hic eligendi porro nulla
               assumenda tenetur, doloribus magni.
             </p>
-            {isDateVisible && (
-              <p className={isDateVisible ? "active" : ""}>10 min ago</p>
-            )}
+            {isDateVisible ||
+              (date && (
+                <p className={date ? "active" : isDateVisible ? "active" : ""}>
+                  10 min ago
+                </p>
+              ))}
           </div>
         </div>
       </div>
