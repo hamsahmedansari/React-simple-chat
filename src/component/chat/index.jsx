@@ -7,9 +7,11 @@ class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      emojiClass: ""
+      emojiClass: "",
+      message: ""
     };
   }
+
   handelChangeEmoji = () => {
     const { emojiClass } = this.state;
     if (emojiClass) {
@@ -24,14 +26,46 @@ class Chat extends Component {
       }));
     }
   };
+
   handelFocusOfTextarea = () => {
     const { changeStateOfUserFocus, user } = this.props;
     changeStateOfUserFocus(user._id);
   };
 
+  handelAddMessage = () => {
+    const { pushMessageToState, user } = this.props;
+    pushMessageToState({
+      _id: String(Date.now()),
+      userId: user._id,
+      message: this.state.message,
+      date: new Date()
+    });
+    this.setState(perState => ({ ...perState, message: "" }));
+  };
+
+  handelAddReaction = param => {
+    const { pushMessageToState, user } = this.props;
+    pushMessageToState({
+      _id: String(Date.now()),
+      userId: user._id,
+      reaction: param,
+      date: new Date()
+    });
+    this.setState(perState => ({ ...perState, message: "" }));
+    this.handelChangeEmoji();
+  };
+
+  handelChangeMessage = e => {
+    const { value } = e.target;
+    this.setState(perState => ({
+      ...perState,
+      message: value
+    }));
+  };
+
   render() {
     const { active, user, messages, allUsers } = this.props;
-    const { emojiClass } = this.state;
+    const { emojiClass, message } = this.state;
     const { _id, name, image, color, fontColor } = user;
 
     return (
@@ -64,34 +98,6 @@ class Chat extends Component {
                   />
                 );
               })}
-
-              {/* <ChatSingle
-                color="#C2185B"
-                userName="Wahaj"
-                message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem ipsa quia at saepe odio, sit assumenda velit, eaque modi nisi voluptates exercitationem explicabo suscipit! Quaerat accusamus ratione aut hic illo!"
-                date={new Date()}
-                image="/assets/images/1.jpeg"
-              />
-              <ChatSingle
-                isMine={true}
-                userName="Hams"
-                message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem ipsa quia at saepe odio, sit assumenda velit, eaque modi nisi voluptates exercitationem explicabo suscipit! Quaerat accusamus ratione aut hic illo!"
-                date={new Date()}
-                image="/assets/images/1.jpeg"
-              />
-              <ChatSingle
-                isMine={true}
-                userName="Hams"
-                reaction="fas fa-frown"
-                date={new Date()}
-                image="/assets/images/1.jpeg"
-              />
-              <ChatSingle
-                userName="Wahaj"
-                color="#C2185B"
-                date={new Date()}
-                image="/assets/images/1.jpeg"
-              /> */}
             </div>
           </div>
           <div
@@ -105,23 +111,41 @@ class Chat extends Component {
             <div className="col-10">
               <textarea
                 placeholder="Send Message here"
+                value={message}
                 onFocus={this.handelFocusOfTextarea}
                 onBlur={this.handelFocusOfTextarea}
+                onChange={this.handelChangeMessage}
               />
             </div>
             <div className="col-1">
-              <i className="fab fa-telegram-plane" />
+              <span onClick={this.handelAddMessage}>
+                <i className="fab fa-telegram-plane" />
+              </span>
             </div>
             <div className="col-1">
               <span onClick={this.handelChangeEmoji}>
                 <i className="far fa-smile-wink" />
               </span>
               <div className={`emoji ${emojiClass}`}>
-                <i className="fas fa-laugh-squint" />
-                <i className="fas fa-frown" />
-                <i className="fas fa-heart" />
-                <i className="fas fa-angry" />
-                <i className="fas fa-smile-wink" />
+                <span
+                  onClick={() => this.handelAddReaction("fas fa-laugh-squint")}
+                >
+                  <i className="fas fa-laugh-squint" />
+                </span>
+                <span onClick={() => this.handelAddReaction("fas fa-frown")}>
+                  <i className="fas fa-frown" />
+                </span>
+                <span onClick={() => this.handelAddReaction("fas fa-heart")}>
+                  <i className="fas fa-heart" />
+                </span>
+                <span onClick={() => this.handelAddReaction("fas fa-angry")}>
+                  <i className="fas fa-angry" />
+                </span>
+                <span
+                  onClick={() => this.handelAddReaction("fas fa-smile-wink")}
+                >
+                  <i className="fas fa-smile-wink" />
+                </span>
               </div>
             </div>
           </div>
@@ -136,7 +160,8 @@ Chat.propTypes = {
   active: PropsType.bool,
   messages: PropsType.array.isRequired,
   allUsers: PropsType.array.isRequired,
-  changeStateOfUserFocus: PropsType.func.isRequired
+  changeStateOfUserFocus: PropsType.func.isRequired,
+  pushMessageToState: PropsType.func.isRequired
 };
 
 export default Chat;

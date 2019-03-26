@@ -76,6 +76,17 @@ class Home extends Component {
     }));
   };
 
+  pushMessageToState = message => {
+    const { messages } = { ...this.state };
+    messages.push(message);
+    console.log(messages);
+
+    this.setState(preState => ({
+      ...preState,
+      messages
+    }));
+  };
+
   render() {
     return (
       <div className="home">
@@ -102,6 +113,7 @@ class Home extends Component {
                   messages={this.state.messages}
                   allUsers={this.state.users}
                   changeStateOfUserFocus={this.changeStateOfUserFocus}
+                  pushMessageToState={this.pushMessageToState}
                 />
               </div>
             ))}
