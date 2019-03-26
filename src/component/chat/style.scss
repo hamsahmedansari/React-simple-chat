@@ -1,9 +1,8 @@
 .chat {
   overflow: hidden;
   transition: all ease-in-out 0.3s;
-  transform: scale(0.95);
+  // transform: scale(0.95);
   &.active {
-    transform: scale(1.05);
     box-shadow: 0px 0px 11px 2px #ccc;
     border-radius: 20px;
     > div {

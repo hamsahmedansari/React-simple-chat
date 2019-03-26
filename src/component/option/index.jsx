@@ -184,6 +184,7 @@ class Option extends Component {
                 >
                   <input
                     type="text"
+                    value={name}
                     className="form-control"
                     placeholder="User Name"
                     onChange={this.handleUserNameChange}
