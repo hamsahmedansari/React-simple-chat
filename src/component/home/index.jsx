@@ -5,8 +5,61 @@ import Chat from "../chat";
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      users: [
+        {
+          _id: "1",
+          name: "Hams Ahmed Ansari",
+          image: "/assets/images/4.jpeg",
+          color: "#03A9F4",
+          fontColor: "#fff"
+        },
+        {
+          _id: "2",
+          name: "Wahaj Ahmed Iqbal",
+          image: "/assets/images/1.jpeg",
+          color: "#C2185B",
+          fontColor: "#fff"
+        },
+        {
+          _id: "3",
+          name: "Fasial Hanif",
+          image: "/assets/images/3.jpeg",
+          color: "#7B1FA2",
+          fontColor: "#fff"
+        }
+      ],
+      messages: [
+        {
+          _id: "1",
+          userId: "1",
+          message:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptas voluptatibus, autem dolorem quidem in exercitationem, harum illo atque aperiam earum molestias quos doloribus consequuntur asperiores possimus rerum sed ad?",
+          date: "Tue Mar 26 2019"
+        },
+        {
+          _id: "2",
+          userId: "2",
+          message:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptas voluptatibus,?",
+          date: "Tue Mar 26 2019"
+        },
+        {
+          _id: "3",
+          userId: "3",
+          reaction: "fas fa-frown",
+          date: "Tue Mar 26 2019"
+        },
+        {
+          _id: "4",
+          userId: "2",
+          message: " voluptas voluptatibus,?",
+          date: "Tue Mar 26 2019"
+        }
+      ]
+    };
   }
+
   render() {
     return (
       <div className="home">
@@ -18,12 +71,22 @@ class Home extends Component {
         {/* Chat */}
         <div className="container">
           <div className="row ">
-            <div className="col-12 col-xl-4 col-lg-4 col-sm-6 col-xs-12">
+            {/* <div className="col-12 col-xl-4 col-lg-4 col-sm-6 col-xs-12">
               <Chat active={true} />
-            </div>
-            <div className="col-12 col-xl-4 col-lg-4 col-sm-6 col-xs-12">
-              <Chat />
-            </div>
+            </div> */}
+            {/* Need To Active on click */}
+            {this.state.users.map(user => (
+              <div
+                className="col-12 col-xl-4 col-lg-4 col-sm-6 col-xs-12 mb-5"
+                key={user._id}
+              >
+                <Chat
+                  user={user}
+                  messages={this.state.messages}
+                  allUsers={this.state.users}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>

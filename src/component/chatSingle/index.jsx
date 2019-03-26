@@ -82,13 +82,13 @@ class ChatSingle extends Component {
   }
 }
 
-ChatSingle.protoTypes = {
+ChatSingle.propTypes = {
   isMine: PropTypes.bool,
   color: PropTypes.string,
   image: PropTypes.string.isRequired,
   userName: PropTypes.string.isRequired,
-  message: PropTypes.string,
-  reaction: PropTypes.string
+  message: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  reaction: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
 };
 
 export default ChatSingle;
