@@ -38,14 +38,40 @@ class Chat extends Component {
           <div className="row">
             <div className="col-12">
               <ChatSingle
-                color="#C2185B"
+                isMine={true}
                 userName="Hams"
                 message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem ipsa quia at saepe odio, sit assumenda velit, eaque modi nisi voluptates exercitationem explicabo suscipit! Quaerat accusamus ratione aut hic illo!"
                 date={new Date()}
                 image="/assets/images/1.jpeg"
               />
-              <ChatSingle isMine={true} />
-              <ChatSingle isMine={true} />
+              <ChatSingle
+                color="#C2185B"
+                userName="Wahaj"
+                message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem ipsa quia at saepe odio, sit assumenda velit, eaque modi nisi voluptates exercitationem explicabo suscipit! Quaerat accusamus ratione aut hic illo!"
+                date={new Date()}
+                image="/assets/images/1.jpeg"
+              />
+              <ChatSingle
+                isMine={true}
+                userName="Hams"
+                message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem ipsa quia at saepe odio, sit assumenda velit, eaque modi nisi voluptates exercitationem explicabo suscipit! Quaerat accusamus ratione aut hic illo!"
+                date={new Date()}
+                image="/assets/images/1.jpeg"
+              />
+              <ChatSingle
+                isMine={true}
+                userName="Hams"
+                reaction="fas fa-frown"
+                date={new Date()}
+                image="/assets/images/1.jpeg"
+              />
+              <ChatSingle
+                userName="Wahaj"
+                color="#C2185B"
+                reaction="fas fa-frown"
+                date={new Date()}
+                image="/assets/images/1.jpeg"
+              />
             </div>
           </div>
           <div className="row">
