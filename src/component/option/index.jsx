@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./style.scss";
-import Chat from "../chat";
+import PropsTypes from "prop-types";
 
 class Option extends Component {
   constructor(props) {
@@ -25,9 +25,23 @@ class Option extends Component {
     const { value } = e.target;
     this.setState(perState => ({ ...perState, name: value }));
   };
-
+  handleAddUser = () => {
+    const { name, image, color, fontColor } = this.state;
+    const { pushUserToState, toggleIsOptionInState } = this.props;
+    if (!name) return false;
+    pushUserToState({
+      _id: Date.now(),
+      name,
+      image,
+      color,
+      fontColor,
+      active: false
+    });
+    toggleIsOptionInState();
+  };
   render() {
     const { color, fontColor, image, name } = this.state;
+    const { toggleIsOptionInState } = this.props;
     const images = [
       "/assets/images/1.jpeg",
       "/assets/images/2.jpeg",
@@ -70,7 +84,6 @@ class Option extends Component {
 
     return (
       <div className="option">
-        <div className="background" />
         <div className="flex-container w-100 h-100">
           <div className="item col-lg-6 col-md-6 col-sm-12">
             <div className="chat animated bounceIn">
@@ -180,6 +193,7 @@ class Option extends Component {
                     style={{
                       marginLeft: "10px"
                     }}
+                    onClick={this.handleAddUser}
                   >
                     Add
                   </button>
@@ -188,6 +202,7 @@ class Option extends Component {
                     style={{
                       marginLeft: "10px"
                     }}
+                    onClick={toggleIsOptionInState}
                   >
                     Close
                   </button>
@@ -249,5 +264,10 @@ class Option extends Component {
     );
   }
 }
+
+Option.propTypes = {
+  toggleIsOptionInState: PropsTypes.func.isRequired,
+  pushUserToState: PropsTypes.func.isRequired
+};
 
 export default Option;

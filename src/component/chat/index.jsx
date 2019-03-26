@@ -34,10 +34,12 @@ class Chat extends Component {
 
   handelAddMessage = () => {
     const { pushMessageToState, user } = this.props;
+    const { message } = this.state;
+    if (!message) return false;
     pushMessageToState({
       _id: String(Date.now()),
       userId: user._id,
-      message: this.state.message,
+      message,
       date: new Date()
     });
     this.setState(perState => ({ ...perState, message: "" }));
@@ -57,7 +59,6 @@ class Chat extends Component {
 
   handelChangeMessage = e => {
     const { value } = e.target;
-    if (!value) return;
     this.setState(perState => ({
       ...perState,
       message: value

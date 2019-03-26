@@ -78,6 +78,15 @@ class Home extends Component {
     }));
   };
 
+  toggleIsOptionInState = () => {
+    const { isOption } = this.state;
+
+    this.setState(preState => ({
+      ...preState,
+      isOption: !isOption
+    }));
+  };
+
   pushMessageToState = message => {
     const { messages } = { ...this.state };
     messages.push(message);
@@ -86,6 +95,15 @@ class Home extends Component {
     this.setState(preState => ({
       ...preState,
       messages
+    }));
+  };
+
+  pushUserToState = user => {
+    const { users } = { ...this.state };
+    users.push(user);
+    this.setState(preState => ({
+      ...preState,
+      users
     }));
   };
 
@@ -114,7 +132,20 @@ class Home extends Component {
             </div>
           </div>
         </div>
-        {isOption && <Option />}
+        {isOption && (
+          <Option
+            toggleIsOptionInState={this.toggleIsOptionInState}
+            pushUserToState={this.pushUserToState}
+          />
+        )}
+        {!isOption && (
+          <button
+            className="btn float-btn btn-danger"
+            onClick={this.toggleIsOptionInState}
+          >
+            <i className="fas fa-plus" />
+          </button>
+        )}
       </React.Fragment>
     );
   }

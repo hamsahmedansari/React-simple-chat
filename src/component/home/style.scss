@@ -8,6 +8,11 @@
   }
   transition: all ease-in-out 0.3s;
 }
+.float-btn {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+}
 .home.inactive {
   filter: blur(12px);
 }
