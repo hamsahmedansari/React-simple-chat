@@ -9,6 +9,9 @@ class ChatSingle extends Component {
       isDateVisible: false
     };
   }
+  componentDidMount() {
+    this.refs.message.scrollIntoView();
+  }
   handleToggleDateVisibility = () => {
     const isDateVisible = !this.state.isDateVisible;
     this.setState(perState => ({
@@ -28,7 +31,7 @@ class ChatSingle extends Component {
       reaction
     } = this.props;
     return (
-      <div className="chatSingle">
+      <div className="chatSingle" ref="message">
         <div className="row">
           {isMine || (
             <React.Fragment>
