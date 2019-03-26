@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import "./styls.scss";
+import "./style.scss";
 
 class ChatSingle extends Component {
   constructor(props) {
