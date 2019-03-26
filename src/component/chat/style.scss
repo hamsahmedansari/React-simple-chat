@@ -73,7 +73,15 @@
         padding: 0;
         padding-top: 4px;
         position: relative;
+        cursor: pointer;
+        > span > svg:hover {
+          transform: scale(1.2);
+        }
+        > span > svg {
+          transition: all ease-in-out 0.1s;
+        }
         .emoji {
+          display: none;
           position: absolute;
           top: -140%;
           font-size: 30px;
@@ -107,6 +115,9 @@
           > :nth-child(5) {
             color: #444;
           }
+        }
+        & .active {
+          display: block !important;
         }
         .emoji::before {
           content: "";

@@ -4,10 +4,27 @@ import "./style.scss";
 class Chat extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      emojiClass: ""
+    };
   }
+  handelChangeEmoji = () => {
+    const { emojiClass } = this.state;
+    if (emojiClass) {
+      this.setState(perState => ({
+        ...perState,
+        emojiClass: ""
+      }));
+    } else {
+      this.setState(perState => ({
+        ...perState,
+        emojiClass: "active"
+      }));
+    }
+  };
   render() {
     const { active } = this.props;
+    const { emojiClass } = this.state;
     return (
       <div className={active ? "active chat" : "chat"}>
         <div className="container">
@@ -28,8 +45,10 @@ class Chat extends Component {
               <i className="fab fa-telegram-plane" />
             </div>
             <div className="col-1">
-              <i className="far fa-smile-wink" />
-              <div className="emoji">
+              <span onClick={this.handelChangeEmoji}>
+                <i className="far fa-smile-wink" />
+              </span>
+              <div className={`emoji ${emojiClass}`}>
                 <i className="fas fa-laugh-squint" />
                 <i className="fas fa-frown" />
                 <i className="fas fa-heart" />
