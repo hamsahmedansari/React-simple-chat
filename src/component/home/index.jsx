@@ -91,9 +91,7 @@ class Home extends Component {
     return (
       <div className="home">
         <div className="container text-center mt-3">
-          <h2>
-            <i className="far fa-comments" /> Group Chat
-          </h2>
+          <h2>{/* <i className="far fa-comments" /> Group Chat */}</h2>
         </div>
         {/* Chat */}
         <div className="container">

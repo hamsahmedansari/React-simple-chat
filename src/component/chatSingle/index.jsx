@@ -35,15 +35,19 @@ class ChatSingle extends Component {
         <div className="row">
           {isMine || (
             <React.Fragment>
-              <div className="col-2 user">
+              <div className="col-2 user animated slideInLeft">
                 <img src={image} alt="" style={{ borderColor: color }} />
               </div>
-              <div className="col-10 message">
+              <div className="col-10 message  animated slideInLeft">
                 <p>{userName}</p>
                 <p
                   onClick={() => this.handleToggleDateVisibility()}
                   style={{ background: color }}
-                  className={reaction ? "reaction" : ""}
+                  className={
+                    reaction
+                      ? "reaction  animated lightSpeedIn"
+                      : "animated lightSpeedIn"
+                  }
                 >
                   {reaction && <i className={reaction} />}
                   {!reaction && message}
@@ -58,12 +62,16 @@ class ChatSingle extends Component {
           )}
           {isMine && (
             <React.Fragment>
-              <div className="col-10 message active">
+              <div className="col-10 message active animated slideInRight">
                 <p>{userName}</p>
                 <p
                   onClick={() => this.handleToggleDateVisibility()}
                   style={{ background: color, marginLeft: "auto" }}
-                  className={reaction ? "reaction" : ""}
+                  className={
+                    reaction
+                      ? "reaction  animated lightSpeedIn"
+                      : "animated lightSpeedIn"
+                  }
                 >
                   {reaction && <i className={reaction} />}
                   {!reaction && message}
@@ -74,7 +82,7 @@ class ChatSingle extends Component {
                   </p>
                 )}
               </div>
-              <div className="col-2 user">
+              <div className="col-2 user   animated slideInRight">
                 <img src={image} alt="" style={{ borderColor: color }} />
               </div>
             </React.Fragment>
