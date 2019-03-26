@@ -1,0 +1,9 @@
+.home {
+  > div > h2 {
+    font-weight: bolder;
+    color: #0288d1;
+    > svg {
+      color: #ff5722;
+    }
+  }
+}
