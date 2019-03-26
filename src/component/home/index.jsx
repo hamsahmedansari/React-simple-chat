@@ -7,6 +7,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isOption: false,
       users: [
         {
           _id: "1",
@@ -89,29 +90,32 @@ class Home extends Component {
   };
 
   render() {
+    const { isOption } = this.state;
     return (
-      // <div className="home">
-      //   <div className="container">
-      //     <div className="row ">
-      //       {this.state.users.map(user => (
-      //         <div
-      //           className="col-12 col-xl-4 col-lg-4 col-sm-6 col-xs-12 mb-5"
-      //           key={user._id}
-      //         >
-      //           <Chat
-      //             user={user}
-      //             active={user.active}
-      //             messages={this.state.messages}
-      //             allUsers={this.state.users}
-      //             changeStateOfUserFocus={this.changeStateOfUserFocus}
-      //             pushMessageToState={this.pushMessageToState}
-      //           />
-      //         </div>
-      //       ))}
-      //     </div>
-      //   </div>
-      // </div>
-      <Option />
+      <React.Fragment>
+        <div className={`home ${isOption ? "inactive" : ""}`}>
+          <div className="container">
+            <div className="row ">
+              {this.state.users.map(user => (
+                <div
+                  className="col-12 col-xl-4 col-lg-4 col-sm-6 col-xs-12 mb-5"
+                  key={user._id}
+                >
+                  <Chat
+                    user={user}
+                    active={user.active}
+                    messages={this.state.messages}
+                    allUsers={this.state.users}
+                    changeStateOfUserFocus={this.changeStateOfUserFocus}
+                    pushMessageToState={this.pushMessageToState}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        {isOption && <Option />}
+      </React.Fragment>
     );
   }
 }

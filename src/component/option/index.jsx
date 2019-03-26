@@ -21,6 +21,11 @@ class Option extends Component {
   handleFontColorChange = param => {
     this.setState(perState => ({ ...perState, fontColor: param }));
   };
+  handleUserNameChange = e => {
+    const { value } = e.target;
+    this.setState(perState => ({ ...perState, name: value }));
+  };
+
   render() {
     const { color, fontColor, image, name } = this.state;
     const images = [
@@ -37,15 +42,38 @@ class Option extends Component {
       "/assets/images/11.jpeg",
       "/assets/images/12.jpeg"
     ];
-    const colors = ["#03A9F4", "#C2185B", "#7B1FA2"];
-    const fontColors = ["#fff", "#03A9F4", "#C2185B", "#7B1FA2"];
+    const colors = [
+      "#03A9F4",
+      "#C2185B",
+      "#D32F2F",
+      "#FF4081",
+      "#7B1FA2",
+      "#303F9F",
+      "#0097A7",
+      "##03A9F4",
+      "#009688",
+      "#388E3C",
+      "#8BC34A",
+      "#AFB42B",
+      "#FFEB3B",
+      "#FFA000",
+      "#FF9800",
+      "#E64A19",
+      "#795548",
+      "#616161",
+      "#607D8B",
+      "#212121",
+      "#F5F5F5"
+    ];
+    const fontColors = ["#fff", ...colors];
     const oppositeColor = colors.filter(item => item !== color);
 
     return (
       <div className="option">
+        <div className="background" />
         <div className="flex-container w-100 h-100">
           <div className="item col-lg-6 col-md-6 col-sm-12">
-            <div className="chat">
+            <div className="chat animated bounceIn">
               <div className="container" style={{ borderColor: color }}>
                 <div
                   className="row"
@@ -58,7 +86,7 @@ class Option extends Component {
                     {name.length > 12 ? name.slice(0, 12) + "..." : name}
                   </div>
                 </div>
-                <div className="row">
+                <div className="row" style={{ borderColor: color }}>
                   <div className="col-12">
                     <div className="chatSingle" ref="message">
                       <div className="row">
@@ -134,21 +162,39 @@ class Option extends Component {
               </div>
             </div>
           </div>
-          <div className="item col-lg-6 col-md-6 col-sm-12 form">
-            <div className="row text-center">
-              <div className=" form-group col-12">
-                <label>
-                  UserName
+          <div className="item col-lg-6 col-md-6 col-sm-12 form animated slideInRight">
+            <div className="row text-center ">
+              <div className=" form-group col-12 border-1 form-inline p-2 bg-primary text-light">
+                <label
+                  className="w-100"
+                  style={{ marginRight: "5px", width: "100%" }}
+                >
                   <input
                     type="text"
-                    name=""
-                    id=""
-                    className="form-control selectpicker"
+                    className="form-control"
+                    placeholder="User Name"
+                    onChange={this.handleUserNameChange}
                   />
+                  <button
+                    className="btn btn-success"
+                    style={{
+                      marginLeft: "10px"
+                    }}
+                  >
+                    Add
+                  </button>
+                  <button
+                    className="btn btn-danger"
+                    style={{
+                      marginLeft: "10px"
+                    }}
+                  >
+                    Close
+                  </button>
                 </label>
               </div>
               <div
-                className="form-group col-12"
+                className="form-group col-12 border-1"
                 style={{ overflowY: "scroll", maxHeight: "200px" }}
               >
                 <p className="text-center">Avatar</p>
@@ -162,7 +208,10 @@ class Option extends Component {
                   </div>
                 ))}
               </div>
-              <div className="form-group col-12">
+              <div
+                className="form-group col-12 border-1"
+                style={{ overflowY: "scroll", maxHeight: "200px" }}
+              >
                 <p className="text-center">Color</p>
                 {colors.map(item => (
                   <div
@@ -175,7 +224,10 @@ class Option extends Component {
                   />
                 ))}
               </div>
-              <div className="form-group col-12">
+              <div
+                className="form-group col-12 border-1"
+                style={{ overflowY: "scroll", maxHeight: "200px" }}
+              >
                 <p className="text-center">Font Color</p>
                 {fontColors.map(item => (
                   <div

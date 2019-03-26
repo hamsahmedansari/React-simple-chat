@@ -57,6 +57,7 @@ class Chat extends Component {
 
   handelChangeMessage = e => {
     const { value } = e.target;
+    if (!value) return;
     this.setState(perState => ({
       ...perState,
       message: value
