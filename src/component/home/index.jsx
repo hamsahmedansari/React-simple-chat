@@ -12,21 +12,24 @@ class Home extends Component {
           name: "Hams Ahmed Ansari",
           image: "/assets/images/4.jpeg",
           color: "#03A9F4",
-          fontColor: "#fff"
+          fontColor: "#fff",
+          active: false
         },
         {
           _id: "2",
           name: "Wahaj Ahmed Iqbal",
           image: "/assets/images/1.jpeg",
           color: "#C2185B",
-          fontColor: "#fff"
+          fontColor: "#fff",
+          active: false
         },
         {
           _id: "3",
           name: "Fasial Hanif",
           image: "/assets/images/3.jpeg",
           color: "#7B1FA2",
-          fontColor: "#fff"
+          fontColor: "#fff",
+          active: false
         }
       ],
       messages: [
@@ -60,6 +63,19 @@ class Home extends Component {
     };
   }
 
+  changeStateOfUserFocus = userID => {
+    const { users } = this.state;
+    const updateUser = users.map(user => {
+      if (user._id === userID) user.active = !user.active;
+      else user.active = false;
+      return user;
+    });
+    this.setState(preState => ({
+      ...preState,
+      users: updateUser
+    }));
+  };
+
   render() {
     return (
       <div className="home">
@@ -82,8 +98,10 @@ class Home extends Component {
               >
                 <Chat
                   user={user}
+                  active={user.active}
                   messages={this.state.messages}
                   allUsers={this.state.users}
+                  changeStateOfUserFocus={this.changeStateOfUserFocus}
                 />
               </div>
             ))}

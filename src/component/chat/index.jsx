@@ -24,6 +24,11 @@ class Chat extends Component {
       }));
     }
   };
+  handelFocusOfTextarea = () => {
+    const { changeStateOfUserFocus, user } = this.props;
+    changeStateOfUserFocus(user._id);
+  };
+
   render() {
     const { active, user, messages, allUsers } = this.props;
     const { emojiClass } = this.state;
@@ -98,7 +103,11 @@ class Chat extends Component {
             }}
           >
             <div className="col-10">
-              <textarea placeholder="Send Message here" />
+              <textarea
+                placeholder="Send Message here"
+                onFocus={this.handelFocusOfTextarea}
+                onBlur={this.handelFocusOfTextarea}
+              />
             </div>
             <div className="col-1">
               <i className="fab fa-telegram-plane" />
@@ -126,7 +135,8 @@ Chat.propTypes = {
   user: PropsType.object.isRequired,
   active: PropsType.bool,
   messages: PropsType.array.isRequired,
-  allUsers: PropsType.array.isRequired
+  allUsers: PropsType.array.isRequired,
+  changeStateOfUserFocus: PropsType.func.isRequired
 };
 
 export default Chat;
