@@ -18,10 +18,10 @@ class Home extends Component {
         {/* Chat */}
         <div className="container">
           <div className="row ">
-            <div className="col-12 col-xl-3 col-lg-4 col-sm-6 col-xs-12">
+            <div className="col-12 col-xl-4 col-lg-4 col-sm-6 col-xs-12">
               <Chat active={true} />
             </div>
-            <div className="col-12 col-xl-3 col-lg-4 col-sm-6 col-xs-12">
+            <div className="col-12 col-xl-4 col-lg-4 col-sm-6 col-xs-12">
               <Chat />
             </div>
           </div>

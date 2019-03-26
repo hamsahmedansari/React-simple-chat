@@ -1,0 +1,30 @@
+.chatSingle {
+  img {
+    max-width: 30px;
+    max-height: 30px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+  }
+  > div {
+    > :nth-child(2) {
+      padding: 0;
+      padding-right: 22px;
+      margin-bottom: 5px;
+      > :nth-child(1) {
+        padding: 10px;
+        margin: 0;
+        color: #fff;
+        background: #04a9f4;
+        border-radius: 33px;
+        border-top-left-radius: 0;
+        border-bottom-right-radius: 0;
+        cursor: pointer;
+      }
+      > :nth-child(2) {
+        font-size: 11px;
+        color: #555;
+        text-align: right;
+      }
+    }
+  }
+}

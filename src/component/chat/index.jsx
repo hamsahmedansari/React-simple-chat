@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./style.scss";
+import ChatSingle from "../chatSingle";
 
 class Chat extends Component {
   constructor(props) {
@@ -35,7 +36,11 @@ class Chat extends Component {
             <div className="col-10 m-auto">name</div>
           </div>
           <div className="row">
-            <div className="col-12">Body</div>
+            <div className="col-12">
+              <ChatSingle />
+              <ChatSingle />
+              <ChatSingle />
+            </div>
           </div>
           <div className="row">
             <div className="col-10">
