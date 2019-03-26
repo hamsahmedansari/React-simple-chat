@@ -1,0 +1,161 @@
+.chat {
+  overflow: hidden;
+  &.active {
+    box-shadow: 0px 0px 11px 2px #ccc;
+    border-radius: 20px;
+    > div {
+      border-radius: 20px;
+      > :nth-child(3) {
+        // overflow: hidden;
+        border: 3px solid #03a9f4;
+        background: rgba(0, 0, 0, 0);
+        border-radius: 20px;
+        color: #03a9f4;
+      }
+      .emoji::before {
+        border-top: 10px solid #03a9f4 !important;
+      }
+    }
+  }
+  > div {
+    border: 3px solid #03a9f4;
+    padding: 10px;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+    transition: all 0.3s ease-in-out;
+    > :nth-child(1) {
+      overflow: hidden;
+      background: #03a9f4;
+      padding: 2px;
+      color: #fff;
+      text-transform: capitalize;
+      font-weight: bold;
+      img {
+        max-width: 50px;
+        border: 1px solid;
+        max-height: 50px;
+        border-radius: 100%;
+      }
+    }
+    > :nth-child(2) {
+      height: 200px;
+    }
+    > :nth-child(3) {
+      //   overflow: hidden;
+      border: 3px solid #03a9f4;
+      background: #03a9f4;
+      border-bottom: 0;
+      padding: 2px;
+      padding-bottom: 0;
+      color: #fff;
+      text-transform: capitalize;
+      font-weight: bold;
+      textarea {
+        overflow: hidden;
+        resize: none;
+        width: 100%;
+        height: 30px;
+        transition: all ease-in-out 0.2s;
+        border-radius: 10px;
+        border: 0px;
+        padding: 2px 5px;
+      }
+      &.active {
+        height: 60px;
+      }
+      textarea:active,
+      textarea:focus {
+        border: 0px;
+      }
+      > :nth-child(2),
+      > :nth-child(3) {
+        padding: 0;
+        padding-top: 4px;
+        position: relative;
+        .emoji {
+          position: absolute;
+          top: -140%;
+          font-size: 30px;
+          width: 200px;
+          right: -21%;
+          text-align: center;
+          border-radius: 60px;
+          border: 2px solid;
+          background: #fff;
+          svg {
+            padding: 4px;
+            display: inline;
+            margin-left: 5px;
+            background: #fff;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all ease-in-out 0.2s;
+          }
+          > :nth-child(1) {
+            color: #0097a7;
+          }
+          > :nth-child(2) {
+            color: #ff5722;
+          }
+          > :nth-child(3) {
+            color: #d32f2f;
+          }
+          > :nth-child(4) {
+            color: #8bc34a;
+          }
+          > :nth-child(5) {
+            color: #444;
+          }
+        }
+        .emoji::before {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          border-left: 9px solid transparent;
+          border-right: 9px solid transparent;
+          border-top: 10px solid #fff;
+          right: 7%;
+          bottom: -24%;
+        }
+        .emoji:hover {
+          > svg {
+            filter: blur(2px);
+            transform: scale(0.9);
+            color: #444;
+          }
+          > svg:hover {
+            filter: blur(0px);
+            animation: emoji ease-in-out 0.3s;
+            transform: scale(1.2);
+          }
+          > :nth-child(1):hover {
+            color: #0097a7;
+          }
+          > :nth-child(2):hover {
+            color: #ff5722;
+          }
+          > :nth-child(3):hover {
+            color: #d32f2f;
+          }
+          > :nth-child(4):hover {
+            color: #8bc34a;
+          }
+          > :nth-child(5):hover {
+            color: #444;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes emoji {
+  0% {
+    transform: rotate(0deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.2);
+  }
+}

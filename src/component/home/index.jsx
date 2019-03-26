@@ -16,7 +16,16 @@ class Home extends Component {
           </h2>
         </div>
         {/* Chat */}
-        <Chat />
+        <div className="container">
+          <div className="row ">
+            <div className="col-12 col-xl-3 col-lg-4 col-sm-6 col-xs-12">
+              <Chat active={true} />
+            </div>
+            <div className="col-12 col-xl-3 col-lg-4 col-sm-6 col-xs-12">
+              <Chat />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
