@@ -12,12 +12,39 @@ class Option extends Component {
       fontColor: "#fff"
     };
   }
+  handleAvatarChange = param => {
+    this.setState(perState => ({ ...perState, image: param }));
+  };
+  handleColorChange = param => {
+    this.setState(perState => ({ ...perState, color: param }));
+  };
+  handleFontColorChange = param => {
+    this.setState(perState => ({ ...perState, fontColor: param }));
+  };
   render() {
     const { color, fontColor, image, name } = this.state;
+    const images = [
+      "/assets/images/1.jpeg",
+      "/assets/images/2.jpeg",
+      "/assets/images/3.jpeg",
+      "/assets/images/4.jpeg",
+      "/assets/images/5.jpeg",
+      "/assets/images/6.jpeg",
+      "/assets/images/7.jpeg",
+      "/assets/images/8.jpeg",
+      "/assets/images/9.jpeg",
+      "/assets/images/10.jpeg",
+      "/assets/images/11.jpeg",
+      "/assets/images/12.jpeg"
+    ];
+    const colors = ["#03A9F4", "#C2185B", "#7B1FA2"];
+    const fontColors = ["#fff", "#03A9F4", "#C2185B", "#7B1FA2"];
+    const oppositeColor = colors.filter(item => item !== color);
+
     return (
       <div className="option">
         <div className="flex-container w-100 h-100">
-          <div className="item">
+          <div className="item col-lg-6 col-md-6 col-sm-12">
             <div className="chat">
               <div className="container" style={{ borderColor: color }}>
                 <div
@@ -40,14 +67,13 @@ class Option extends Component {
                             <img
                               src="/assets/images/3.jpeg"
                               alt=""
-                              style={{ borderColor: "#C2185B" }}
+                              style={{ borderColor: oppositeColor[0] }}
                             />
                           </div>
                           <div className="col-10 message  animated slideInLeft">
                             <p>Jhon</p>
                             <p
-                              onClick={() => this.handleToggleDateVisibility()}
-                              style={{ background: "#C2185B" }}
+                              style={{ background: oppositeColor[0] }}
                               className=" animated lightSpeedIn"
                             >
                               Lorem ipsum dolor sit amet consectetur adipisicing
@@ -59,7 +85,6 @@ class Option extends Component {
                           <div className="col-10 message active animated slideInRight">
                             <p>Whick</p>
                             <p
-                              onClick={() => this.handleToggleDateVisibility()}
                               style={{ background: color, marginLeft: "auto" }}
                               className="animated lightSpeedIn"
                             >
@@ -109,7 +134,64 @@ class Option extends Component {
               </div>
             </div>
           </div>
-          <div className="item">right</div>
+          <div className="item col-lg-6 col-md-6 col-sm-12 form">
+            <div className="row text-center">
+              <div className=" form-group col-12">
+                <label>
+                  UserName
+                  <input
+                    type="text"
+                    name=""
+                    id=""
+                    className="form-control selectpicker"
+                  />
+                </label>
+              </div>
+              <div
+                className="form-group col-12"
+                style={{ overflowY: "scroll", maxHeight: "200px" }}
+              >
+                <p className="text-center">Avatar</p>
+                {images.map(img => (
+                  <div
+                    key={img}
+                    className={`avatar-img ${img === image ? "active" : ""}`}
+                    onClick={() => this.handleAvatarChange(img)}
+                  >
+                    <img src={img} alt="" />
+                  </div>
+                ))}
+              </div>
+              <div className="form-group col-12">
+                <p className="text-center">Color</p>
+                {colors.map(item => (
+                  <div
+                    key={item}
+                    className={`color-img ${item === color ? "active" : ""}`}
+                    onClick={() => this.handleColorChange(item)}
+                    style={{
+                      background: item
+                    }}
+                  />
+                ))}
+              </div>
+              <div className="form-group col-12">
+                <p className="text-center">Font Color</p>
+                {fontColors.map(item => (
+                  <div
+                    key={item}
+                    className={`color-img ${
+                      item === fontColor ? "active" : ""
+                    }`}
+                    onClick={() => this.handleFontColorChange(item)}
+                    style={{
+                      background: item
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

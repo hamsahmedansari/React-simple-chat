@@ -12,10 +12,50 @@
     justify-content: space-around;
     flex-wrap: wrap;
   }
+
   .item {
     order: 1;
   }
   .chat {
     width: 300px;
+    margin: auto;
+  }
+  .avatar-img {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin: 2px;
+    border-radius: 100%;
+    img {
+      height: 100px;
+      width: 100px;
+      border: 1px solid #04a9f4;
+      cursor: pointer;
+      border-radius: 100%;
+    }
+  }
+  .avatar-img.active::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f058";
+    position: absolute;
+    font-size: 33px;
+    bottom: 0;
+    right: 0;
+    color: #04a9f4;
+  }
+  .color-img {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin: 2px;
+    border-radius: 100%;
+    transition: all 0.3s ease-in-out;
+  }
+  .color-img.active {
+    border: 5px solid #444444;
+    transform: scale(1.1);
   }
 }
