@@ -118,6 +118,7 @@
         }
         & .active {
           display: block !important;
+          animation: emoji-open 0.4s ease-in-out;
         }
         .emoji::before {
           content: "";
@@ -168,5 +169,29 @@
   }
   100% {
     transform: rotate(360deg) scale(1.2);
+  }
+}
+
+@keyframes emoji-open {
+  0% {
+    width: 0px;
+    overflow: hidden;
+    height: 0px;
+    font-size: 0px;
+  }
+  50% {
+    height: 45px;
+    width: 10px;
+    overflow: hidden;
+    font-size: 0px;
+  }
+  99% {
+    overflow: hidden;
+  }
+  100% {
+    height: 45px;
+    width: 200px;
+    overflow: visible;
+    font-size: 30px;
   }
 }
