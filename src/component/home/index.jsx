@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./style.scss";
 import Chat from "../chat";
+import Option from "../option";
 
 class Home extends Component {
   constructor(props) {
@@ -89,35 +90,28 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="home">
-        <div className="container text-center mt-3">
-          <h2>{/* <i className="far fa-comments" /> Group Chat */}</h2>
-        </div>
-        {/* Chat */}
-        <div className="container">
-          <div className="row ">
-            {/* <div className="col-12 col-xl-4 col-lg-4 col-sm-6 col-xs-12">
-              <Chat active={true} />
-            </div> */}
-            {/* Need To Active on click */}
-            {this.state.users.map(user => (
-              <div
-                className="col-12 col-xl-4 col-lg-4 col-sm-6 col-xs-12 mb-5"
-                key={user._id}
-              >
-                <Chat
-                  user={user}
-                  active={user.active}
-                  messages={this.state.messages}
-                  allUsers={this.state.users}
-                  changeStateOfUserFocus={this.changeStateOfUserFocus}
-                  pushMessageToState={this.pushMessageToState}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      // <div className="home">
+      //   <div className="container">
+      //     <div className="row ">
+      //       {this.state.users.map(user => (
+      //         <div
+      //           className="col-12 col-xl-4 col-lg-4 col-sm-6 col-xs-12 mb-5"
+      //           key={user._id}
+      //         >
+      //           <Chat
+      //             user={user}
+      //             active={user.active}
+      //             messages={this.state.messages}
+      //             allUsers={this.state.users}
+      //             changeStateOfUserFocus={this.changeStateOfUserFocus}
+      //             pushMessageToState={this.pushMessageToState}
+      //           />
+      //         </div>
+      //       ))}
+      //     </div>
+      //   </div>
+      // </div>
+      <Option />
     );
   }
 }
