@@ -38,7 +38,7 @@
     img {
       height: 100px;
       width: 100px;
-      border: 1px solid #04a9f4;
+      // border: 1px solid #04a9f4;
       cursor: pointer;
       border-radius: 100%;
     }
@@ -70,9 +70,41 @@
     border: 2px solid #0c79fa;
     margin: 0;
     background: #fff;
+    > div {
+      transition: all 0.3s ease-in-out;
+    }
   }
   .chat > div > :nth-child(2) {
     background: #fff;
     border: 5px solid;
+  }
+  .border-1:hover {
+    > div {
+      transform: scale(0.8);
+      filter: blur(2px);
+
+      > img {
+        border-color: #000;
+      }
+    }
+    > div:hover {
+      transform: scale(1.2);
+      filter: blur(0px);
+      border-color: #fff;
+      border-width: 3px;
+      border-style: dashed;
+      > img {
+        border: 0;
+      }
+    }
+  }
+}
+
+@keyframes border-hover {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

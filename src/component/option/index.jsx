@@ -64,7 +64,7 @@ class Option extends Component {
       "#7B1FA2",
       "#303F9F",
       "#0097A7",
-      "##03A9F4",
+      "#03A9F4",
       "#009688",
       "#388E3C",
       "#8BC34A",
