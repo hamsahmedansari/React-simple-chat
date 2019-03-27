@@ -29,7 +29,6 @@ class Chat extends Component {
 
   handelFocusOfTextarea = () => {
     const { changeStateOfUserFocus, user } = this.props;
-    const { message } = this.state;
     changeStateOfUserFocus(user._id);
   };
 
@@ -132,7 +131,8 @@ class Chat extends Component {
             style={{
               backgroundColor: color,
               color: fontColor,
-              borderColor: color
+              borderColor: color,
+              borderBottomColor: color
             }}
           >
             <div className="col-10">
