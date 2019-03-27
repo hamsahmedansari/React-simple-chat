@@ -178,19 +178,19 @@
             animation: emoji ease-in-out 0.3s;
             transform: scale(1.2);
           }
-          > span > :nth-child(1):hover {
+          > :nth-child(1) > svg:hover {
             color: #0097a7;
           }
-          > span > :nth-child(2):hover {
+          > :nth-child(2) > svg:hover {
             color: #ff5722;
           }
-          > span > :nth-child(3):hover {
+          > :nth-child(3) > svg:hover {
             color: #d32f2f;
           }
-          > span > :nth-child(4):hover {
+          > :nth-child(4) > svg:hover {
             color: #8bc34a;
           }
-          > span > :nth-child(5):hover {
+          > :nth-child(5) > svg:hover {
             color: #444;
           }
         }
