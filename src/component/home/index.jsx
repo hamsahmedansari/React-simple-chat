@@ -15,7 +15,8 @@ class Home extends Component {
           image: "/assets/images/4.jpeg",
           color: "#03A9F4",
           fontColor: "#fff",
-          active: false
+          active: false,
+          isFocus: false
         },
         {
           _id: "2",
@@ -23,7 +24,8 @@ class Home extends Component {
           image: "/assets/images/1.jpeg",
           color: "#C2185B",
           fontColor: "#fff",
-          active: false
+          active: false,
+          isFocus: false
         },
         {
           _id: "3",
@@ -31,7 +33,8 @@ class Home extends Component {
           image: "/assets/images/3.jpeg",
           color: "#7B1FA2",
           fontColor: "#fff",
-          active: false
+          active: false,
+          isFocus: false
         }
       ],
       messages: [
@@ -68,8 +71,12 @@ class Home extends Component {
   changeStateOfUserFocus = userID => {
     const { users } = this.state;
     const updateUser = users.map(user => {
-      if (user._id === userID) user.active = !user.active;
-      else user.active = false;
+      if (user._id === userID) {
+        user.active = !user.active;
+        user.isFocus = !user.isFocus;
+      } else {
+        user.isFocus = false;
+      }
       return user;
     });
     this.setState(preState => ({

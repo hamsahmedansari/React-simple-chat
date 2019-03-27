@@ -29,6 +29,7 @@ class Chat extends Component {
 
   handelFocusOfTextarea = () => {
     const { changeStateOfUserFocus, user } = this.props;
+    const { message } = this.state;
     changeStateOfUserFocus(user._id);
   };
 
@@ -99,6 +100,30 @@ class Chat extends Component {
                     fontColor={cUser.fontColor}
                   />
                 );
+              })}
+              {allUsers.map(user => {
+                if (user._id !== _id) {
+                  if (user.isFocus) {
+                    return (
+                      <ChatSingle
+                        key={user}
+                        isMine={false}
+                        userName={user.name}
+                        message={false}
+                        date={"Tue Mar 26 2019"}
+                        reaction={false}
+                        image={user.image}
+                        color={user.color}
+                        fontColor={user.fontColor}
+                        isFocus={true}
+                      />
+                    );
+                  } else {
+                    return false;
+                  }
+                } else {
+                  return false;
+                }
               })}
             </div>
           </div>

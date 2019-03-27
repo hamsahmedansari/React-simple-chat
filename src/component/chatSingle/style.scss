@@ -19,6 +19,9 @@
         font-size: 70px !important;
         transition: all ease-in-out 0.3s;
       }
+      .isMessage-box {
+        width: 37% !important;
+      }
       > :nth-child(1) {
         margin: 0px;
       }
@@ -54,6 +57,11 @@
         }
       }
     }
+  }
+  .isMessage {
+    max-width: inherit;
+    max-height: inherit;
+    border: 0px;
   }
 }
 

@@ -35,7 +35,8 @@ class Option extends Component {
       image,
       color,
       fontColor,
-      active: false
+      active: false,
+      isFocus: false
     });
     toggleIsOptionInState();
   };
@@ -57,7 +58,6 @@ class Option extends Component {
       "/assets/images/12.jpeg"
     ];
     const colors = [
-      "#03A9F4",
       "#C2185B",
       "#D32F2F",
       "#FF4081",

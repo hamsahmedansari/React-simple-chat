@@ -10,7 +10,9 @@ class ChatSingle extends Component {
     };
   }
   componentDidMount() {
-    this.refs.message.scrollIntoView();
+    if (!this.props.isFocus) {
+      this.refs.message.scrollIntoView();
+    }
   }
   handleToggleDateVisibility = () => {
     const isDateVisible = !this.state.isDateVisible;
@@ -28,7 +30,8 @@ class ChatSingle extends Component {
       userName,
       message,
       date,
-      reaction
+      reaction,
+      isFocus
     } = this.props;
     return (
       <div className="chatSingle" ref="message">
@@ -46,11 +49,20 @@ class ChatSingle extends Component {
                   className={
                     reaction
                       ? "reaction  animated lightSpeedIn"
+                      : isFocus
+                      ? "isMessage-box  animated lightSpeedIn"
                       : "animated lightSpeedIn"
                   }
                 >
                   {reaction && <i className={reaction} />}
                   {!reaction && message}
+                  {isFocus && (
+                    <img
+                      src="/assets/images/msg.gif"
+                      className="isMessage"
+                      alt=""
+                    />
+                  )}
                 </p>
                 {isDateVisible && (
                   <p className={isDateVisible ? "active" : ""}>
@@ -70,11 +82,20 @@ class ChatSingle extends Component {
                   className={
                     reaction
                       ? "reaction  animated lightSpeedIn"
+                      : isFocus
+                      ? "reaction  animated lightSpeedIn"
                       : "animated lightSpeedIn"
                   }
                 >
                   {reaction && <i className={reaction} />}
                   {!reaction && message}
+                  {isFocus && (
+                    <img
+                      src="/assets/images/msg.gif"
+                      className="isMessage"
+                      alt=""
+                    />
+                  )}
                 </p>
                 {isDateVisible && (
                   <p className={isDateVisible ? "active" : ""}>
@@ -99,7 +120,8 @@ ChatSingle.propTypes = {
   image: PropTypes.string.isRequired,
   userName: PropTypes.string.isRequired,
   message: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-  reaction: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
+  reaction: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  isFocus: PropTypes.bool
 };
 
 export default ChatSingle;
