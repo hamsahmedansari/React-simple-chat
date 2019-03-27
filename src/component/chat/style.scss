@@ -168,29 +168,29 @@
           transition: all ease-in-out 0.3s;
         }
         .emoji:hover {
-          > svg {
+          > span > svg {
             filter: blur(2px);
             transform: scale(0.9);
             color: #444;
           }
-          > svg:hover {
+          > span > svg:hover {
             filter: blur(0px);
             animation: emoji ease-in-out 0.3s;
             transform: scale(1.2);
           }
-          > :nth-child(1):hover {
+          > span > :nth-child(1):hover {
             color: #0097a7;
           }
-          > :nth-child(2):hover {
+          > span > :nth-child(2):hover {
             color: #ff5722;
           }
-          > :nth-child(3):hover {
+          > span > :nth-child(3):hover {
             color: #d32f2f;
           }
-          > :nth-child(4):hover {
+          > span > :nth-child(4):hover {
             color: #8bc34a;
           }
-          > :nth-child(5):hover {
+          > span > :nth-child(5):hover {
             color: #444;
           }
         }
